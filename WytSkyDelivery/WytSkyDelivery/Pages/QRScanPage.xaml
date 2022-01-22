@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customcontrol:MyContentPage 
+    xmlns:customcontrol="clr-namespace:WytSkyDelivery.CustomControl"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Translation="clr-namespace:WytSkyDelivery.Resources;assembly=WytSkyDelivery"
+    BackgroundColor="White"
+    Title="{x:Static Translation:Resource.Text_QRCodeScan}"
+    x:Class="WytSkyDelivery.Pages.QRScanPage">
+    <customcontrol:MyContentPage.Content>
+        <StackLayout>
+            <ScrollView 
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <StackLayout 
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand">
+                    <Frame
+                        Margin="20"
+                        BackgroundColor="WhiteSmoke"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="CenterAndExpand"
+                        HasShadow="True">
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand" 
+                            VerticalOptions="FillAndExpand">
+                            <Label 
+                                FontSize="Large"
+                                Margin="0,5"
+                                TextColor="{StaticResource PrimaryColor}"
+                                HorizontalOptions="Start">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="{x:Static Translation:Resource.Text_Welcome}"/>
+                                            <Span Text=" : "/>
+                                            <Span Text="{Binding UserName}"  TextColor="{StaticResource SecondColor}"/>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                FontSize="Medium"
+                                Margin="5"
+                                Text="{x:Static Translation:Resource.Text_OrderCode}"
+                                TextColor="{StaticResource PrimaryColor}"
+                                HorizontalOptions="Start"/>
+                            <StackLayout
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="Center"
+                                Orientation="Horizontal">
+                                <Entry
+                                    HorizontalOptions="FillAndExpand"
+                                    Text="{Binding Code}"
+                                    IsEnabled="{Binding IsEnableEdit}"/>
+                                <Button
+                                    Command="{Binding ScanQRCommand}"
+                                    Text="{x:Static Translation:Resource.Text_ScanQR}"/>
+                            </StackLayout>
+                            <Button
+                                Command="{Binding OpenOrderCommand}"
+                                Text="{x:Static Translation:Resource.Text_OrderDetails}"/>
+                            <Button
+                                Command="{Binding updateOrderCommand}"
+                                Text="{x:Static Translation:Resource.Text_updateOrderDetails}"/>
+                        </StackLayout>
+                    </Frame>
+                    
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </customcontrol:MyContentPage.Content>
+</customcontrol:MyContentPage>

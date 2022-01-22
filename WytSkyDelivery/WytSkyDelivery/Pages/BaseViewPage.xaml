@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customcontrol:MyContentPage  
+    xmlns:customcontrol="clr-namespace:WytSkyDelivery.CustomControl"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="{StaticResource PrimaryColor}"
+    Title="{Binding Model.Name}"
+    x:Name="pageView"
+    x:Class="WytSkyDelivery.Pages.BaseViewPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView
+                HorizontalScrollBarVisibility="Never"
+                VerticalScrollBarVisibility="Never"
+                ItemsSource="{Binding ListData}"
+                SelectionChangedCommand="{Binding SelectedItemCommand}"
+                SelectionChangedCommandParameter="{Binding .}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        HorizontalItemSpacing="0"
+                        Orientation="Vertical"
+                        Span="1"
+                        VerticalItemSpacing="0" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <StackLayout
+                                BackgroundColor="WhiteSmoke"
+                                Margin="0,5"
+                                Padding="5">
+                                <ScrollView 
+                                    HeightRequest="{Binding HeightRequest}"
+                                    Orientation="Vertical" 
+                                    HorizontalScrollBarVisibility="Never"
+                                    VerticalScrollBarVisibility="Never">
+                                    <StackLayout 
+                                        x:Name="StackList"
+                                        Orientation="Vertical"
+                                        Spacing="0"
+                                        BindableLayout.ItemsSource="{Binding ListOfData}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackLayout
+                                                    Orientation="Horizontal">
+                                                    <Label
+                                                        FontSize="Small"
+                                                        HorizontalOptions="FillAndExpand"
+                                                        HorizontalTextAlignment="Start">
+                                                        <Label.FormattedText>
+                                                            <FormattedString>
+                                                                <Span 
+                                                                    Text="{Binding Key}"
+                                                                    TextColor="{StaticResource PrimaryColor}"/>
+                                                                <Span Text="  :  "/>
+                                                                <Span 
+                                                                    Text="{Binding Value}"
+                                                                    TextColor="{StaticResource SecondColor}"/>
+                                                            </FormattedString>
+                                                        </Label.FormattedText>
+                                                    </Label>
+                                                </StackLayout>
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                </ScrollView>
+                                <Button
+                                    Margin="0,-20,0,-10"
+                                    FontSize="Small"
+                                    Command="{Binding Path=BindingContext.SeeMoreCommand,Source={x:Reference pageView}}"
+                                    CommandParameter="{Binding .}"
+                                    Text="{Binding TextSeeMore}"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="Transparent"
+                                    HorizontalOptions="End"
+                                    TextColor="Blue"/>
+                            </StackLayout>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</customcontrol:MyContentPage>

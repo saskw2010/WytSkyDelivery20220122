@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<FlyoutPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="WytSkyDelivery.Pages.MunePage" 
+    IsPresentedChanged="MasterDetailPage_IsPresentedChanged"
+    BackgroundColor="White" Opacity="0.97"
+    x:Name="page">
+    <FlyoutPage.Flyout>
+        <ContentPage x:Name="MasterPage" Title="☰">
+            <ContentPage.Content>
+                <StackLayout>
+                    <ListView x:Name="MenuItemsListView" 
+                              SeparatorVisibility="None"
+                              HasUnevenRows="true" 
+                              ItemsSource="{Binding MenuItems}">
+                        <ListView.Header>
+                            <Frame 
+                                HorizontalOptions="FillAndExpand" 
+                                BackgroundColor="{StaticResource PrimaryColor}" 
+                                BorderColor="{StaticResource PrimaryColor}"
+                                CornerRadius="25"
+                                Margin="0,-30,-30,20"
+                                Padding="0,30,0,0">
+                                <StackLayout>
+                                    <Image 
+                                        Margin="0"
+                                        HeightRequest="80"
+                                        Source="logo.png" 
+                                        HorizontalOptions="Center" 
+                                        VerticalOptions="Center"/>
+                                    <Label 
+                                        HorizontalOptions="CenterAndExpand" 
+                                        Margin="0,0,0,20"
+                                        TextColor="White"
+                                        Text="{Binding ClientName}"/>
+                                </StackLayout>
+                            </Frame>
+                        </ListView.Header>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Frame
+                                        CornerRadius="15"
+                                        BackgroundColor="{StaticResource PrimaryColor}"
+                                        BorderColor="Transparent"
+                                        Margin="-20,5,20,5" Padding="0">
+                                        <StackLayout
+                                            Orientation="Horizontal">
+                                            <Frame
+                                                HorizontalOptions="FillAndExpand"
+                                                BorderColor="{StaticResource SecondColor}"
+                                                CornerRadius="15"
+                                                BackgroundColor="{StaticResource SecondColor}"
+                                                Padding="7">
+                                                <Label 
+                                                    HorizontalOptions="FillAndExpand" 
+                                                    Text="{Binding Title}" 
+                                                    FontSize="Medium"
+                                                    FontFamily="{StaticResource ProductSansRegular}"
+                                                    TextColor="{StaticResource PrimaryColor}"
+                                                    Margin="20,5"
+                                                    VerticalOptions="CenterAndExpand"
+                                                    VerticalTextAlignment="Center"
+                                                    HorizontalTextAlignment="End" 
+                                                    FontAttributes="Bold"/>
+                                            </Frame>
+                                            <Image 
+                                                Source="{Binding Icon}"
+                                                HeightRequest="35" 
+                                                WidthRequest="35" 
+                                                Margin="10"
+                                                VerticalOptions="Center"/>
+                                        </StackLayout>
+                                        <Frame.Triggers>
+                                            <DataTrigger
+                                                TargetType="Frame"
+                                                Binding="{Binding Source={x:Reference page},Path=FlowDirection}"
+                                                Value="RightToLeft">
+                                                <Setter Property="Margin" Value="20,5,-20,5"/>
+                                            </DataTrigger>
+                                        </Frame.Triggers>
+                                    </Frame>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </FlyoutPage.Flyout>
+</FlyoutPage>

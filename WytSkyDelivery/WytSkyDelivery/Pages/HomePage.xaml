@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customcontrol:MyContentPage  
+    xmlns:customcontrol="clr-namespace:WytSkyDelivery.CustomControl"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundColor="{StaticResource PrimaryColor}"
+    xmlns:Translation="clr-namespace:WytSkyDelivery.Resources;assembly=WytSkyDelivery"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    Title="{x:Static Translation:Resource.Text_Home}"
+    x:Name="pageView"
+    x:Class="WytSkyDelivery.Pages.HomePage">
+    <ContentPage.Content>
+        <StackLayout>
+            <CollectionView
+                HorizontalScrollBarVisibility="Never"
+                VerticalScrollBarVisibility="Never"
+                ItemsSource="{Binding ListData}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout
+                        HorizontalItemSpacing="0"
+                        Orientation="Vertical"
+                        Span="2"
+                        VerticalItemSpacing="0" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <View.GestureRecognizers>
+                                <TapGestureRecognizer 
+                                    Command="{Binding Path=BindingContext.SelectedItemCommand,Source={x:Reference pageView}}"
+                                    CommandParameter="{Binding .}"/>
+                            </View.GestureRecognizers>
+                            <Frame
+                                Padding="10"
+                                Margin="5"
+                                BorderColor="WhiteSmoke">
+                                <StackLayout>
+                                    <ffimageloading:CachedImage 
+                                        Source="{Binding ImageUrl}"
+                                        Aspect="AspectFit"
+                                        HeightRequest="50"
+                                        WidthRequest="50"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        Margin="10">
+                                        <ffimageloading:CachedImage.Transformations>
+                                            <fftransformations:RoundedTransformation
+                                                BorderSize="1" 
+                                                BorderHexColor="#0f4c82" 
+                                                Radius="80"/>
+                                        </ffimageloading:CachedImage.Transformations>
+                                    </ffimageloading:CachedImage>
+                                    <Label 
+                                        Text="{Binding Name}"
+                                        FontSize="Medium"
+                                        Margin="5"
+                                        HeightRequest="50"
+                                        MaxLines="2"
+                                        LineBreakMode="TailTruncation"
+                                        HorizontalTextAlignment="Center"
+                                        VerticalTextAlignment="Center"
+                                        TextColor="{StaticResource PrimaryColor}"
+                                        VerticalOptions="CenterAndExpand"
+                                        HorizontalOptions="CenterAndExpand"/>
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ContentPage.Content>
+</customcontrol:MyContentPage>

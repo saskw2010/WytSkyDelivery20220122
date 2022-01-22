@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customcontrol:MyPopupPage  
+    xmlns:customcontrol="clr-namespace:WytSkyDelivery.CustomControl"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+    xmlns:animations="http://rotorgames.com"
+    BackgroundColor="Transparent"
+    x:Name="_ToastPopup"
+    x:Class="WytSkyDelivery.CustomControl.PopupMessage.ToastPopupPage">
+    <customcontrol:MyPopupPage.Animation>
+        <animations:ScaleAnimation 
+            PositionIn="Center" PositionOut="Center" ScaleIn="1.2"
+            ScaleOut="0.8" DurationIn="400" DurationOut="300" 
+            EasingIn="SinOut" EasingOut="SinIn"
+            HasBackgroundAnimation="False"/>
+    </customcontrol:MyPopupPage.Animation>
+    <customcontrol:MyPopupPage.Content>
+        <StackLayout
+            Margin="10"
+            Padding="10"
+            BindingContext="{x:Reference _ToastPopup}"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="Start">
+            <Frame
+                CornerRadius="10"
+                Margin="20"
+                Padding="15"
+                HasShadow="False"
+                x:Name="MainView">
+                <StackLayout
+                    Orientation="Horizontal">
+                    <Image 
+                        Margin="5"
+                        HeightRequest="40"
+                        WidthRequest="40"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"
+                        Source="{Binding ImageSource}"/>
+                    <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="CenterAndExpand">
+                        <Label
+                            x:Name="_Title"
+                            FontAttributes="Bold"
+                            FontFamily="{StaticResource ProductSansRegular}"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Start"
+                            Text="{Binding ToastTitle}"
+                            FontSize="Small"/>
+                        <Label
+                            x:Name="_Message"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Start"
+                            Text="{Binding ToastMessage}"
+                            FontSize="Micro"/>
+                    </StackLayout>
+                </StackLayout>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup Name="ToastPopupStatus">
+                        <VisualState Name="Non">
+                            <VisualState.Setters>
+                                <Setter TargetName="MainView" Property="Frame.BorderColor" Value="Transparent" />
+                                <Setter TargetName="MainView" Property="Frame.BackgroundColor" Value="White" />
+                                <Setter TargetName="_Title" Property="Label.TextColor" Value="{StaticResource SecondColor}" />
+                                <Setter TargetName="_Message" Property="Label.TextColor" Value="{StaticResource PrimaryColor}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState Name="Message">
+                            <VisualState.Setters>
+                                <Setter TargetName="MainView" Property="Frame.BorderColor" Value="Transparent" />
+                                <Setter TargetName="MainView" Property="Frame.BackgroundColor" Value="White" />
+                                <Setter TargetName="_Title" Property="Label.TextColor" Value="{StaticResource SecondColor}" />
+                                <Setter TargetName="_Message" Property="Label.TextColor" Value="{StaticResource PrimaryColor}" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState Name="Success">
+                            <VisualState.Setters>
+                                <Setter TargetName="MainView" Property="Frame.BorderColor" Value="Green" />
+                                <Setter TargetName="MainView" Property="Frame.BackgroundColor" Value="#88bd90" />
+                                <Setter TargetName="_Title" Property="Label.TextColor" Value="Green" />
+                                <Setter TargetName="_Message" Property="Label.TextColor" Value="Green" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState Name="Error">
+                            <VisualState.Setters>
+                                <Setter TargetName="MainView" Property="Frame.BorderColor" Value="Red" />
+                                <Setter TargetName="MainView" Property="Frame.BackgroundColor" Value="#faa796" />
+                                <Setter TargetName="_Title" Property="Label.TextColor" Value="Red" />
+                                <Setter TargetName="_Message" Property="Label.TextColor" Value="Red" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState Name="Warning">
+                            <VisualState.Setters>
+                                <Setter TargetName="MainView" Property="Frame.BorderColor" Value="Orange" />
+                                <Setter TargetName="MainView" Property="Frame.BackgroundColor" Value="#fbf9b9" />
+                                <Setter TargetName="_Title" Property="Label.TextColor" Value="Orange" />
+                                <Setter TargetName="_Message" Property="Label.TextColor" Value="Orange" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+            </Frame>
+        </StackLayout>
+    </customcontrol:MyPopupPage.Content>
+</customcontrol:MyPopupPage>

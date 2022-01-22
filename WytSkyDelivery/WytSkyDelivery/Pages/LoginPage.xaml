@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customcontrol:MyContentPage  
+    xmlns:customcontrol="clr-namespace:WytSkyDelivery.CustomControl"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Translation="clr-namespace:WytSkyDelivery.Resources;assembly=WytSkyDelivery"
+    BackgroundColor="{StaticResource PrimaryColor}"
+    x:Class="WytSkyDelivery.Pages.LoginPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ScrollView 
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <StackLayout 
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand">
+                    <Image 
+                        Source="logo.png" 
+                        Margin="50,0"
+                        BackgroundColor="Transparent"
+                        HorizontalOptions="CenterAndExpand"/>
+                    <!--<StackLayout 
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="FillAndExpand"
+                        IsVisible="{Binding IsVisibleCode}" 
+                        Margin="20">
+                        <Label 
+                            Text="{x:Static Translation:Resource.Text_Welcome}" 
+                            FontSize="35"
+                            Margin="0,5"
+                            TextColor="White"
+                            HorizontalOptions="Start"/>
+                        <Frame 
+                            BackgroundColor="White"
+                            BorderColor="White"
+                            CornerRadius="15"
+                            Padding="20,40"
+                            HasShadow="False">
+                            <StackLayout>
+                                <customcontrol:NEntry
+                                    Header="{x:Static Translation:Resource.Text_CompanyCode}"
+                                    IconSource="UserName.png"
+                                    TabIndex="1"
+                                    KeyboardType="Email"
+                                    Text="{Binding Code}"/>
+                                <customcontrol:NEntry
+                                    Header="{x:Static Translation:Resource.Text_EmailOrPhone}"
+                                    IconSource="UserName.png"
+                                    TabIndex="1"
+                                    KeyboardType="Email"
+                                    Text="{Binding UserName}"/>
+                            </StackLayout>
+                        </Frame>
+                        <Button 
+                            Text="{x:Static Translation:Resource.Text_Use}"
+                            Command="{Binding UseCodeCommand}"
+                            Padding="10,0" HorizontalOptions="Center"
+                            TextColor="{StaticResource PrimaryColor}"
+                            CornerRadius="20"
+                            BackgroundColor="White"/>
+                    </StackLayout> -->
+                    <StackLayout 
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="FillAndExpand"
+                        IsVisible="{Binding IsVisibleLogin}" 
+                        Margin="20">
+                        <Label 
+                            FontSize="35"
+                            Margin="0,5"
+                            TextColor="White"
+                            HorizontalOptions="Start">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="{x:Static Translation:Resource.Text_Welcome}"/>
+                                        <Span Text=" : "/>
+                                        <!-- <Span Text="{Binding CompnyName}" /> -->
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame 
+                            BackgroundColor="White"
+                            BorderColor="White"
+                            CornerRadius="15"
+                            Padding="20,40"
+                            HasShadow="False">
+                            <StackLayout x:Name="StackLoginNEntry">
+                                <customcontrol:NEntry
+                                    Header="{x:Static Translation:Resource.Text_EmailOrPhone}"
+                                    IconSource="UserName.png"
+                                    TabIndex="1"
+                                    KeyboardType="Email"
+                                    Text="{Binding UserName}"/>
+                                <customcontrol:NEntry
+                                    Header="{x:Static Translation:Resource.Text_Password}"
+                                    IconSource="UserPassword.png"
+                                    IsPassword="True"
+                                    TabIndex="2"
+                                    Text="{Binding Password}"/>
+                                <!--<Label
+                                    TextColor="Blue"
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                    TextDecorations="Underline"
+                                    Text="{x:Static Translation:Resource.Text_ChangeCompany}">
+                                    <View.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding ChangeCompanyCommand}"/>
+                                    </View.GestureRecognizers>
+                                </Label>-->
+                            </StackLayout>
+                        </Frame>
+                        <Button 
+                            Text="{x:Static Translation:Resource.Text_Login}"
+                            Command="{Binding LoginCommand}"
+                            Margin="20"
+                            CornerRadius="20"
+                            Padding="20,0"
+                            HorizontalOptions="Center"
+                            TextColor="{StaticResource PrimaryColor}"
+                            BackgroundColor="White"/>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</customcontrol:MyContentPage>

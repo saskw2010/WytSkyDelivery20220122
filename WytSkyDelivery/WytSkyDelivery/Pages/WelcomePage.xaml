@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Translation="clr-namespace:WytSkyDelivery.Resources;assembly=WytSkyDelivery"
+    x:Class="WytSkyDelivery.Pages.WelcomePage" 
+    NavigationPage.HasNavigationBar="False">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="{StaticResource PrimaryColor}" Offset="0.5"/>
+            <GradientStop Color="{StaticResource SecondColor}" Offset="1.0"/>
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    <ContentPage.Content>
+        <ScrollView 
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+            <StackLayout 
+                HorizontalOptions="FillAndExpand" 
+                VerticalOptions="FillAndExpand">
+                <StackLayout 
+                    Margin="20" 
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="CenterAndExpand">
+                    <Image 
+                        Margin="50,0" Source="Logo.png" 
+                        BackgroundColor="Transparent" 
+                        HorizontalOptions="CenterAndExpand"/>
+                    <StackLayout 
+                        FlowDirection="LeftToRight"
+                        Orientation="Horizontal"
+                        HorizontalOptions="Center"
+                        Padding="30">
+                        <Label 
+                            Text="English" 
+                            TextColor="White">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ChangeLanguageEnCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                        <Label 
+                            Text=" / "
+                            TextColor="White"/>
+                        <Label 
+                            Text="العربية"
+                            TextColor="White">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ChangeLanguageArCommand}"/>
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </StackLayout>
+                    <Button 
+                        Padding="10"
+                        CornerRadius="20"
+                        Text="{x:Static Translation:Resource.Text_Login}"
+                        Command="{Binding LoginCommand}"/>
+                    <Button
+                        Padding="10" 
+                        CornerRadius="20"
+                        IsVisible="false"
+                        Text="{x:Static Translation:Resource.Text_Skip }"
+                        Command="{Binding BrowseServicesCommand}"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

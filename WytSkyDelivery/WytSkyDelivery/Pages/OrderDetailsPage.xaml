@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customcontrol:MyContentPage 
+    xmlns:customcontrol="clr-namespace:WytSkyDelivery.CustomControl"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Translation="clr-namespace:WytSkyDelivery.Resources;assembly=WytSkyDelivery" xmlns:datatemplate="clr-namespace:WytSkyDelivery.DataTemplate"
+    BackgroundColor="White"
+    Title="{x:Static Translation:Resource.Text_OrderDetails}"
+    x:Class="WytSkyDelivery.Pages.OrderDetailsPage">
+    <customcontrol:MyContentPage.Content>
+        <StackLayout>
+            <ScrollView 
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <StackLayout 
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand">
+                    <StackLayout
+                        HorizontalOptions="FillAndExpand" 
+                        VerticalOptions="FillAndExpand">
+                        <Label 
+                            FontSize="Large"
+                            Margin="5"
+                            TextColor="{StaticResource PrimaryColor}"
+                            HorizontalOptions="Start">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="{x:Static Translation:Resource.Text_Welcome}"/>
+                                        <Span Text=" : "/>
+                                        <Span Text="{Binding UserName}"  TextColor="{StaticResource SecondColor}"/>
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Frame
+                            Margin="10"
+                            BackgroundColor="WhiteSmoke">
+                            <StackLayout>
+                                <Label 
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{x:Static Translation:Resource.Text_OrderDetails}"/>
+                                <datatemplate:BaseViewDT DataModel="{Binding QROrder}"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame
+                            Margin="10"
+                            BackgroundColor="WhiteSmoke">
+                            <StackLayout>
+                                <Label 
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{x:Static Translation:Resource.Text_Client}"/>
+                                <datatemplate:BaseViewDT DataModel="{Binding QROrder.user}"/>
+                            </StackLayout>
+                        </Frame>
+                        <Frame
+                            Margin="10"
+                            BackgroundColor="WhiteSmoke">
+                            <StackLayout>
+                                <Label
+                                    HorizontalOptions="FillAndExpand"
+                                    HorizontalTextAlignment="Start"
+                                    Text="{x:Static Translation:Resource.Test_Address}"/>
+                                <datatemplate:BaseViewDT DataModel="{Binding QROrder.location}"/>
+                                <Button
+                                    HorizontalOptions="End"
+                                    Command="{Binding OpenLocationCommand}"
+                                    Text="{x:Static Translation:Resource.Text_OpenLocation}"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </customcontrol:MyContentPage.Content>
+</customcontrol:MyContentPage>

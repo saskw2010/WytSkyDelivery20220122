@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application 
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    x:Class="WytSkyDelivery.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <Color x:Key="PrimaryColor">#0f4c82</Color>
+            <Color x:Key="SecondColor">#fd8f62</Color>
+            <Color x:Key="TherdColor">#52245D4D</Color>
+            <Color x:Key="GrayColor">#1A1A1A80</Color>
+            <Color x:Key="WhiteColor">#ffff</Color>
+
+            <Style TargetType="NavigationPage">
+                <Setter Property="BackgroundColor" Value="{StaticResource WhiteColor}"/>
+                <Setter Property="BarTextColor" Value="{StaticResource WhiteColor}"/>
+                <Setter Property="BarBackgroundColor" Value="{StaticResource PrimaryColor}"/>
+            </Style>
+
+            <OnPlatform x:Key="ProductSansRegular" x:TypeArguments="x:String">
+                <On Platform="Android" Value="Product_Sans_Regular.ttf#Product_Sans_Regular" />
+                <On Platform="iOS" Value="Product_Sans_Regular" />
+            </OnPlatform>
+
+            <Style TargetType="Frame">
+                <Setter Property="CornerRadius" Value="20"/>
+                <Setter Property="HasShadow" Value="True"/>
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="TextColor" Value="{StaticResource WhiteColor}"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontFamily" Value="{StaticResource ProductSansRegular}"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="BorderColor" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="BorderWidth" Value="1"/>
+                <Setter Property="CornerRadius" Value="30"/>
+                <Setter Property="Padding" Value="15"/>
+                <Setter Property="Margin" Value="3"/>
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="{StaticResource ProductSansRegular}"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="TextColor" Value="{StaticResource PrimaryColor}"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+            </Style>
+            
+            <Style TargetType="Entry">
+                <Setter Property="FontFamily" Value="{StaticResource ProductSansRegular}"/>
+                <Setter Property="PlaceholderColor" Value="Gray"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+            
+            <Style TargetType="ScrollView">
+                <Setter Property="HorizontalScrollBarVisibility" Value="Never"/>
+                <Setter Property="VerticalScrollBarVisibility" Value="Never"/>
+            </Style>
+
+            <Style TargetType="forms:CachedImage">
+                <Setter Property="ErrorPlaceholder" Value="Icon"/>
+                <Setter Property="LoadingPlaceholder" Value="hug.gif"/>
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
